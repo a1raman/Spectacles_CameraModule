@@ -14,36 +14,6 @@ let seq = 0;
 function now(){ return getTime(); }
 
 
-//------------ 동기 ----------
-function sendBase64Jpeg(b64, s){
-  const req = new Request(script.postUrl, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'text/plain',
-      'X-Seq': '' + s,             //프레임 순번 추가
-    },
-    body: b64,
-  });
-  script.internetModule.fetch(req)
-    .catch(e => print('[POST ERR] ' + e))
-    .then(_ => { inFlight = false; });  //전송 끝나면 락 해제
-}
-
-function encodeAndSend(tex){
-  if (inFlight) return;        //이전 작업 끝나기 전엔 스킵(최신만 유지)
-  inFlight = true;
-  const thisSeq = ++seq;       //프레임 시퀀스 증가
-
-  Base64.encodeTextureAsync(
-    tex,
-    function(encoded){ sendBase64Jpeg(encoded, thisSeq); },
-    function(err){ inFlight = false; print('[Base64 ERR] ' + err); },
-    CompressionQuality.HighQuality,
-    EncodingType.Jpg
-  );
-}
-
-
 //-------네트워크 문제점 진단 (잘되면 필요없음)-------
 function delay(sec, fn) {
   var ev = script.createEvent('DelayedCallbackEvent');
@@ -118,20 +88,30 @@ function healthCheckAndStart(retry = 0){
 }
 
 //----------업로드----------
-function sendBase64Jpeg(b64){
+//------------ 동기 ----------
+function sendBase64Jpeg(b64, s){
   const req = new Request(script.postUrl, {
     method: 'POST',
-    headers: { 'Content-Type': 'text/plain' },
+    headers: {
+      'Content-Type': 'text/plain',
+      'X-Seq': '' + s,             //프레임 순번 추가
+    },
     body: b64,
   });
-  script.internetModule.fetch(req).catch(e => print('[POST ERR] '+ e));
+  script.internetModule.fetch(req)
+    .catch(e => print('[POST ERR] ' + e))
+    .then(_ => { inFlight = false; });  //전송 끝나면 락 해제
 }
 
 function encodeAndSend(tex){
+  if (inFlight) return;        //이전 작업 끝나기 전엔 스킵(최신만 유지)
+  inFlight = true;
+  const thisSeq = ++seq;       //프레임 시퀀스 증가
+
   Base64.encodeTextureAsync(
     tex,
-    function(encoded){ sendBase64Jpeg(encoded); },
-    function(err){ print('[Base64 ERR] ' + err); },
+    function(encoded){ sendBase64Jpeg(encoded, thisSeq); },
+    function(err){ inFlight = false; print('[Base64 ERR] ' + err); },
     CompressionQuality.HighQuality,
     EncodingType.Jpg
   );
