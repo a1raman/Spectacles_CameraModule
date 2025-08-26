@@ -1,0 +1,7 @@
+ExternalSources:
+  type: "std::map<class Es::Uuid,class Es::Path,struct std::less<class Es::Uuid>,class std::allocator<struct std::pair<class Es::Uuid const ,class Es::Path> > >"
+  value:
+    - 36345ac1-9820-4291-8fcd-879b19861fc6: "D:/Program Files/Snap Inc/Lens Studio/JsPlugins/PresetsRegistry/Assets/Script/Resources/Untitled JavaScript.js"
+    - cb29c642-be0f-4f52-a8f3-5ff0d6403633: "D:/Program Files/Snap Inc/Lens Studio/Plugins/Es_ShaderGraph_Model.bundle/InstantiationResources/image_unlit.ss_graph"
+    - ee31a935-7903-443d-bccd-140302cb968d: "E:/감정인식/LensStudio/Remote-ARsistance-main/Remote ARsistance LS/Assets/Base.png"
+  options: 4

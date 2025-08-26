@@ -1,0 +1,13 @@
+CollapsedEntities:
+  type: stringset
+  value:
+    size: 7
+    values:
+      - Base.png
+      - ImageMaterial 2.mat
+      - ImageMaterial.mat
+      - Internet Module.internetModule
+      - Remote Media Module.remoteMediaModule
+      - cameraModule.js
+      - image_unlit.ss_graph
+  options: 4

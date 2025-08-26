@@ -1,0 +1,47 @@
+- !<AssetImportMetadata/36345ac1-9820-4291-8fcd-879b19861fc6>
+  ImportedAssetIds:
+    JavaScriptAsset: !<reference> ac8214f9-fe6c-4afb-abad-b9d2c3f4edf3
+  ImporterName: JavaScriptAssetImporter
+  PrimaryAsset: !<reference> ac8214f9-fe6c-4afb-abad-b9d2c3f4edf3
+  PackageType: NotAPackage
+  PackagePolicy: CannotBeUnpacked
+  ExtraData:
+    {}
+  AssetDataMap:
+    JavaScriptAsset: !<own> 3f1b0a18-b269-4352-9e78-1d8d171e36f9
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<ScriptAssetData/3f1b0a18-b269-4352-9e78-1d8d171e36f9>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  ComponentUid: 57cbeb7d-d557-4041-b97b-a8e9a26c55ab
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  CurrentVisibility: Editable
+  MaxVisibility: Editable
+  ScriptInputsHidden:
+    healthMaxRetry: false
+    healthRetrySec: false
+    internetModule: false
+    postUrl: false
+    sendFps: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  DefaultScriptInputs:
+    - internetModule: !<reference.InternetModule> 00000000-0000-0000-0000-000000000000
+      postUrl: "http://192.168.0.23:9999/upload"
+      healthMaxRetry: 5
+      healthRetrySec: !<float> 2.000000
+      sendFps: 8
+  ScriptTypes:
+    -
+      {}
